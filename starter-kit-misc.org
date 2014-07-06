@@ -197,8 +197,8 @@ configuration for  multi-web-mode
 added by  Peterson Lian(AKA ablian)
 
 configuration for ignoring scheduled todo item while showing global todo list
-set it to none nil
+set it to 
 
 #+begin_src emacs-lisp
-(setq org-agenda-todo-ignore-scheduled 1)
+(setq org-agenda-todo-ignore-scheduled t)
 #+end_src
