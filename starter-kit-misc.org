@@ -179,3 +179,26 @@ added by Peterson Lian
 #+begin_src emacs-lisp
 (electric-pair-mode 1)
 #+end_src
+** multi-web-mode
+added by  Peterson Lian(AKA ablian)
+
+configuration for  multi-web-mode
+
+#+begin_src emacs-lisp
+(require 'multi-web-mode)
+(setq mweb-default-major-mode 'html-mode)
+(setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
+                  (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
+                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+(setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
+(multi-web-global-mode 1)
+#+end_src
+** global todo list view
+added by  Peterson Lian(AKA ablian)
+
+configuration for ignoring scheduled todo item while showing global todo list
+set it to none nil
+
+#+begin_src emacs-lisp
+(setq org-agenda-todo-ignore-scheduled 1)
+#+end_src
