@@ -4,7 +4,6 @@
 ## misc
 loaddefs.el*
 auto-save-list
-custom.el
 places
 .svn
 .DS_Store
@@ -24,8 +23,10 @@ themes/*
 url/*
 
 ## exported and encrypted files
+## change to not include "custom.el" file by ablian(aka Peterson Lian)
 *gpg
 *el
+!custom.el
 *elc
 *html
 *tex
