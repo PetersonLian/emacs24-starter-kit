@@ -230,3 +230,16 @@ add "ac-source-yasnippet" into variable "ac-sources"
 #+end_src
 =======
 >>>>>>> parent of 0dd9316... customization:Auto-Complete mode
+*** turn on for other specified modes:html,etc.
+**** turn on for html
+#+begin_src emacs-lisp
+(add-to-list 'ac-modes 'html-mode)
+#+end_src
+
+** yasnippet
+added by  Peterson Lian(AKA ablian)
+*** turn on yasnippet
+#+begin_src emacs-lisp
+(require 'yasnippet);;not yasnippet-bundle
+(yas-global-mode 1)
+#+end_src
