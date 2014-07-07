@@ -98,3 +98,13 @@ directory) file for information on the functions, and see
 
 Code blocks can be loaded into the library of babel from any Org-mode
 file using the `org-babel-lob-ingest' function.
+** global todo list view
+added by  Peterson Lian(AKA ablian)
+
+configuration for ignoring scheduled todo item while showing global todo list
+set it to 
+
+#+begin_src emacs-lisp
+(setq org-agenda-todo-ignore-scheduled t)
+#+end_src
+

@@ -193,12 +193,14 @@ configuration for  multi-web-mode
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
 #+end_src
-** global todo list view
+** tabbar currently not using
+
 added by  Peterson Lian(AKA ablian)
-
-configuration for ignoring scheduled todo item while showing global todo list
-set it to 
-
-#+begin_src emacs-lisp
-(setq org-agenda-todo-ignore-scheduled t)
-#+end_src
+*** turn on tabbar-mode 1
+(require 'tabbar)
+(tabbar-mode 1)
+*** set up shorcuts for forwarding and backwarding tabbar
+**** forward
+(global-set-key [(ctrl c) (b) (f)] 'tabbar-forward)
+**** backward
+(global-set-key [(ctrl c) (b) (b)] 'tabbar-backward)
