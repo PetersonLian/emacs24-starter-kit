@@ -193,7 +193,7 @@ configuration for  multi-web-mode
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
 #+end_src
-** 'tabbar' currently not using
+** tabbar currently not using
 
 added by  Peterson Lian(AKA ablian)
 *** turn on tabbar-mode 1
@@ -204,6 +204,7 @@ added by  Peterson Lian(AKA ablian)
 (global-set-key [(ctrl c) (b) (f)] 'tabbar-forward)
 **** backward
 (global-set-key [(ctrl c) (b) (b)] 'tabbar-backward)
+<<<<<<< HEAD
 ** Auto-Complete Mode
 added by Peterson Lian(AKA ablian)
 
@@ -227,3 +228,5 @@ add "ac-source-yasnippet" into variable "ac-sources"
 #+begin_src emacs-lisp
 (add-to-list 'ac-sources 'ac-source-yasnippet)
 #+end_src
+=======
+>>>>>>> parent of 0dd9316... customization:Auto-Complete mode
