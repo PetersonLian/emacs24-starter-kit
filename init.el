@@ -24,6 +24,7 @@
                                                       (getenv "ORG_HOME"))))
        '(require 'org))
     ;; load up the starter kit
-    (org-babel-load-file (expand-file-name "starter-kit.org" starter-kit-dir))))
+    (org-babel-load-file (expand-file-name "starter-kit.org" starter-kit-dir))
+    (org-babel-load-file (expand-file-name "starter-kit-org.org" starter-kit-dir))));;added by ablian(PetersonLian)
 
 ;;; init.el ends here
