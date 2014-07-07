@@ -218,3 +218,12 @@ added by Peterson Lian(AKA ablian)
 (setq ac-trigger-commands
       (cons 'backward-delete-char-untabify ac-trigger-commands))
 #+end_src
+*** turn on "fuzzy" functionality
+#+begin_src emacs-lisp
+(setq ac-fuzzy-enable t)
+#+end_src
+*** compatible with "yasnippet" mode
+add "ac-source-yasnippet" into variable "ac-sources"
+#+begin_src emacs-lisp
+(add-to-list 'ac-sources 'ac-source-yasnippet)
+#+end_src
