@@ -193,7 +193,7 @@ configuration for  multi-web-mode
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
 #+end_src
-** tabbar currently not using
+** 'tabbar' currently not using
 
 added by  Peterson Lian(AKA ablian)
 *** turn on tabbar-mode 1
@@ -204,3 +204,17 @@ added by  Peterson Lian(AKA ablian)
 (global-set-key [(ctrl c) (b) (f)] 'tabbar-forward)
 **** backward
 (global-set-key [(ctrl c) (b) (b)] 'tabbar-backward)
+** Auto-Complete Mode
+added by Peterson Lian(AKA ablian)
+
+*** configuration for Auto-Complete-mode to start with
+#+begin_src emacs-lisp
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20140618.2217/dict")
+(ac-config-default)
+#+end_src
+*** after backspace some character, we still want auto-complete be triggered
+#+begin_src emacs-lisp
+(setq ac-trigger-commands
+      (cons 'backward-delete-char-untabify ac-trigger-commands))
+#+end_src
