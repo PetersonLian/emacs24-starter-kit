@@ -1,3 +1,4 @@
+
 #+TITLE: Starter Kit Misc
 #+OPTIONS: toc:nil num:nil ^:nil
 
@@ -235,11 +236,148 @@ add "ac-source-yasnippet" into variable "ac-sources"
 #+begin_src emacs-lisp
 (add-to-list 'ac-modes 'html-mode)
 #+end_src
-
+*** user defined dictionary
+#+begin_src emacs-lisp
+(setq ac-user-dictionary-files '("~/.emacs.d/ac-custom-dict"))
+#+end_src
+*** [TBC][Unresolved]resolve conflicts with fly-spell mode and other relative mode
+currently I manually close fly-spell mode in the specified buffer and
+then invoke Auto-Complete-mode
 ** yasnippet
-added by  Peterson Lian(AKA ablian)
+added by Peterson Lian(AKA ablian)
 *** turn on yasnippet
 #+begin_src emacs-lisp
 (require 'yasnippet);;not yasnippet-bundle
 (yas-global-mode 1)
 #+end_src
+** after evoke irc-mode, adding hook to activate auto-complete mode
+#+begin_src emacs-lisp
+;;  (add-hook 'irc-mode-hook
+;;  `(lanbda()
+;;    ;;evoke auto-complete-mode
+;;    (auto-complete-mode)
+;;          )
+;;  )
+;;  (run-hooks 'irc-mode-hook)
+#+end_src
+** ace-jump-mode
+#+begin_src emacs-lisp
+(add-to-list 'load-path "/home/ablian/.emacs.d/elpa/ace-jump-20140616.115")
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode)
+#+end_src
+** define one emacs command:ac. taking 1 argument to define whether open Auto-Complete mode.
+没有参数:关闭fly-spell再开auto-complete
+有参数，不管参数为何:关闭fly-spell不再开auto-complete
+
+#+begin_src emacs-lisp
+  (defun ac(&optional arg)
+    "defaultly with no argument, close 'flyspell-mode and then open 'auto-complete mode
+    if there was an argument, then close 'flyspell-mode and not opening 'auto-complete mode
+    It's a workaround for my 'flyspell-mode conflicts with auto-complete mode'
+    Author: Peterson Lian
+    Email:lianpeipei202@gmail.com
+    "
+    (interactive "P")
+    (if arg
+      ;;argument is not 'nil,just close 'flyspell-mode
+      (progn
+      (flyspell-mode 0)
+      (auto-fill-mode 0)
+      (toggle-truncate-lines)
+      )
+      ;;argument is 'nil, close 'flyspell-mode and open 'Auto-complete mode
+      (progn 
+      (flyspell-mode 0)
+      (auto-complete-mode 1)
+      (auto-fill-mode 0)
+      (toggle-truncate-lines)
+      ))
+    )
+  
+  (defun wtn(&optional arg)
+    "do one thing: revert-buffer-with-coding-system chinese-gbk"
+    (interactive "P")
+    (progn
+      (revert-buffer-with-coding-system 'chinese-gbk)
+      (ac)
+    )
+    )
+#+end_src
+** auctex[TBC][NOT AVAILABLE]
+配置auctex
++begin_src emacs-lisp
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
++end_src
+** gmail
+more details, check out [[http://www.emacswiki.org/emacs/GnusGmai][GnusGmail]] and [[http://blog.csdn.net/csfreebird/article/details/7191463][傻瓜式入门]]
+** writing novel
++begin_src emacs-lisp
+              (defun wtn(&optional arg)
+                "用来定义个人写作环境
+            此函数一般都是在打开‘第一步小说.txt’之后调用
+            一般这个文件打开之后，拥有如下mode '(Org Fly yas Fill)'
+            所以，这个函数做如下工作:
+            关闭flyspell-mode、auto-fill-mode;开启toggle-truncate-lines函数;
+            开启auto-complete-mode函数；
+            分割窗口成2个字窗口，上面那个窗口较下，下面较大
+            "
+                (interactive)
+                (progn
+                  (flyspell-mode 0)
+                  (auto-fill-mode 0)
+                  (Auto-Complete-mode 1)
+                  (toggle-truncate-lines)
+                  (split-window-below 6))
+              )
++end_src
+** smex
+added by ablian(AKA Peterson Lian)
+绑定smex到M-x替代原有的execute-extended-command
+原有的execute-extended-command重新绑定到 C-c C-c M-x
+
+#+begin_src emacs-lisp
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  (global-set-key (kbd "C-c M-x") 'smex-update)
+  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+#+end_src
+** window-number
+#+begin_src emacs-lisp
+(require 'window-number)
+;;this is used to number window for view.without this line, window is switchable
+;;but you don't know every windows' number.You will have to guess it
+(window-number-mode 1)
+;;key binding
+(global-set-key (kbd "C-x o") 'window-number-switch)
+#+end_src
+** code folding代码折叠
+具体见此链接 https://github.com/zenozeng/yafolding.el
+将自定义的el文件，放到.emacs.d/src文件夹下，貌似这样会先被读入？？
+*** keybindings
+#+begin_src emacs-lisp
+(require 'yafolding)
+
+(define-key yafolding-mode-map (kbd "<C-S-return>") nil)
+(define-key yafolding-mode-map (kbd "<C-return>") nil)
+(define-key yafolding-mode-map (kbd "C-c <C-S-return>") 'yafolding-toggle-all)
+(define-key yafolding-mode-map (kbd "C-c <C-return>") 'yafolding-toggle-element)
+#+end_src
+** prog-mode-hook
+prog-mode-hook is introduced in version 24.1
+全局关闭flyspell-mode 和 auto-fill-mode
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook (lambda() 
+                              (progn 
+                                (flyspell-mode 0)
+                                (auto-complete-mode 1)
+                                (auto-fill-mode 0)
+                                (toggle-truncate-lines)
+                                )
+  ))
+    
+#+end_src      

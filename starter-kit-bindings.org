@@ -99,6 +99,15 @@ globally for later insertion into an Org-mode buffer.  See
   (define-key global-map "\C-cl" 'org-store-link)
 #+end_src
 
+** Fullscreen
+added by ablian(AKA Peterson Lian)
+toggle-frame-fullscreen is a function defined in start-kit-defuns.org
+by ablian
+bind it to F11
+#+begin_src emacs-lisp
+  (define-key global-map [f11] 'toggle-frame-fullscreen)
+#+end_src
+
 ** Rgrep
 Rgrep is infinitely useful in multi-file projects.
 
@@ -107,3 +116,4 @@ Rgrep is infinitely useful in multi-file projects.
 #+begin_src emacs-lisp
   (define-key global-map "\C-x\C-r" 'rgrep)
 #+end_src
+

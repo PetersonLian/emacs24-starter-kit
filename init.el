@@ -5,12 +5,9 @@
 ;; This is the first thing to get loaded.
 ;;
 
-;; load Org-mode from source when the ORG_HOME environment variable is set
-(when (getenv "ORG_HOME")
-  (let ((org-lisp-dir (expand-file-name "lisp" (getenv "ORG_HOME"))))
-    (when (file-directory-p org-lisp-dir)
-      (add-to-list 'load-path org-lisp-dir)
-      (require 'org))))
+;;don't know why 'window-number didn't work
+;;I(ablian AKA Peterson Lian) have to manually add the package's path to 'load-path
+;;(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/window-number-20140124.302"))
 
 ;; load the starter kit from the `after-init-hook' so all packages are loaded
 (add-hook 'after-init-hook
@@ -25,6 +22,16 @@
        '(require 'org))
     ;; load up the starter kit
     (org-babel-load-file (expand-file-name "starter-kit.org" starter-kit-dir))
-    (org-babel-load-file (expand-file-name "starter-kit-org.org" starter-kit-dir))));;added by ablian(PetersonLian)
+    (org-babel-load-file (expand-file-name "starter-kit-org.org" starter-kit-dir))
+    
+    ;;yafolding.el
+    ;;yet another folding
+    ;;'prog-mode-hook is introduced in version 24.1
+    (add-hook 'prog-mode-hook (lambda()(yafolding-mode)))
+    
+    ));;added by ablian(PetersonLian)
+
+(put 'narrow-to-region 'disabled nil)
+
 
 ;;; init.el ends here

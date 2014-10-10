@@ -1,0 +1,17 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("包昊军的system-config的研读"
+ (filename . "~/system-config/bin/Linux/after-check-out.sh")
+ (front-context-string . "sudo usermod -a ")
+ (rear-context-string . ".\nsudo setupcon\n")
+ (position . 610))
+("(elisp) Using Interactive"
+ (front-context-string . "  (starting with")
+ (rear-context-string . "ument values\n   ")
+ (position . 978335)
+ (filename . "/usr/local/share/info/elisp")
+ (info-node . "Using Interactive")
+ (handler . Info-bookmark-jump))
+)
