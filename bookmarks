@@ -2,7 +2,26 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("包昊军的system-config的研读"
+(("add_page.php"
+ (filename . "~/jianbing/gjj_server/h5/page/add_page.php")
+ (front-context-string . "            }els")
+ (rear-context-string . "        return;\n")
+ (position . 2452))
+("(elisp) Group Definitions"
+ (front-context-string . "================")
+ (rear-context-string . "mization Groups\n")
+ (position . 607816)
+ (filename . "/usr/local/share/info/elisp")
+ (info-node . "Group Definitions")
+ (handler . Info-bookmark-jump))
+("elisp|Customization Settings"
+ (front-context-string . "\n14.3 Defining C")
+ (rear-context-string . ": Customization\n")
+ (position . 610611)
+ (filename . "/usr/local/share/info/elisp")
+ (info-node . "Variable Definitions")
+ (handler . Info-bookmark-jump))
+("包昊军的system-config的研读"
  (filename . "~/system-config/bin/Linux/after-check-out.sh")
  (front-context-string . "sudo usermod -a ")
  (rear-context-string . ".\nsudo setupcon\n")

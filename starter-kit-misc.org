@@ -1,4 +1,3 @@
-
 #+TITLE: Starter Kit Misc
 #+OPTIONS: toc:nil num:nil ^:nil
 
@@ -285,6 +284,7 @@ added by Peterson Lian(AKA ablian)
       (flyspell-mode 0)
       (auto-fill-mode 0)
       (toggle-truncate-lines)
+      (yafolding-mode 1)
       )
       ;;argument is 'nil, close 'flyspell-mode and open 'Auto-complete mode
       (progn 
@@ -292,6 +292,7 @@ added by Peterson Lian(AKA ablian)
       (auto-complete-mode 1)
       (auto-fill-mode 0)
       (toggle-truncate-lines)
+      (yafolding-mode 1)
       ))
     )
   
@@ -358,26 +359,63 @@ added by ablian(AKA Peterson Lian)
 ** code folding代码折叠
 具体见此链接 https://github.com/zenozeng/yafolding.el
 将自定义的el文件，放到.emacs.d/src文件夹下，貌似这样会先被读入？？
-*** keybindings
+** yafolding.el keybindings
+using 'RET' instead of '<return>'.
+why?see [[http://ergoemacs.org/emacs/emacs_key_notation_return_vs_RET.html][reason]]
 #+begin_src emacs-lisp
 (require 'yafolding)
-
-(define-key yafolding-mode-map (kbd "<C-S-return>") nil)
-(define-key yafolding-mode-map (kbd "<C-return>") nil)
-(define-key yafolding-mode-map (kbd "C-c <C-S-return>") 'yafolding-toggle-all)
-(define-key yafolding-mode-map (kbd "C-c <C-return>") 'yafolding-toggle-element)
+(define-key yafolding-mode-map (kbd "C-c C-a RET") 'yafolding-toggle-all)
+(define-key yafolding-mode-map (kbd "C-c C-e RET") 'yafolding-toggle-element)
 #+end_src
 ** prog-mode-hook
-prog-mode-hook is introduced in version 24.1
-全局关闭flyspell-mode 和 auto-fill-mode
+已经写进到./init.el文件中
+** auto-coding-alist自动在所有打开的mode里头打开自定义的ac函数
+不能用，貌似会覆盖掉所有的其他mode。即，一个org文件，我同时也是需要它
+能自发开启org-mode的
++begin_src emacs-lisp
+   (add-to-list 'auto-mode-alist '("\\.*$" . ac))
++end_src
+** php配置环境
+具体参考[[http://truongtx.me/2014/07/22/setup-php-development-environment-in-emacs/][这个文档]]
+
+
 #+begin_src emacs-lisp
-  (add-hook 'prog-mode-hook (lambda() 
-                              (progn 
-                                (flyspell-mode 0)
-                                (auto-complete-mode 1)
-                                (auto-fill-mode 0)
-                                (toggle-truncate-lines)
-                                )
-  ))
+    (defun my-setup-php ()
+      ;; enable web mode
+      (web-mode)
     
-#+end_src      
+      ;; make these variables local
+      (make-local-variable 'web-mode-code-indent-offset)
+      (make-local-variable 'web-mode-markup-indent-offset)
+      (make-local-variable 'web-mode-css-indent-offset)
+    
+      ;; set indentation, can set different indentation level for different code type
+      (setq web-mode-code-indent-offset 4)
+      (setq web-mode-css-indent-offset 2)
+      (setq web-mode-markup-indent-offset 2))
+    
+    (add-to-list 'auto-mode-alist '("\\.php$" . my-setup-php))
+#+end_src
+
+;;Syntax Checking for PHP files
+
+    (flycheck-define-checker my-php
+    "A PHP syntax checker using the PHP command line interpreter.
+  
+  See URL `http://php.net/manual/en/features.commandline.php'."
+    :command ("php" "-l" "-d" "error_reporting=E_ALL" "-d" "display_errors=1"
+              "-d" "log_errors=0" source)
+    :error-patterns
+    ((error line-start (or "Parse" "Fatal" "syntax") " error" (any ":" ",") " "
+            (message) " in " (file-name) " on line " line line-end))
+    :modes (php-mode php+-mode web-mode))
+    (flycheck-select-checker my-php)
+   (flycheck-mode t))
+
+
+** global-auto-revert-mode
+
+#+begin_src emacs-lisp    
+    ;;turn on global-auto-revert-mode
+    (global-auto-revert-mode t)
+#+end_src

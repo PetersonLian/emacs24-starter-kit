@@ -27,9 +27,21 @@
     ;;yafolding.el
     ;;yet another folding
     ;;'prog-mode-hook is introduced in version 24.1
-    (add-hook 'prog-mode-hook (lambda()(yafolding-mode)))
+    (add-hook 'prog-mode-hook (lambda()(yafolding-mode 1)))
     
-    ));;added by ablian(PetersonLian)
+    ;;prog-mode-hook is introduced in version 24.1
+    ;;全局关闭flyspell-mode 和 auto-fill-mode
+    (add-hook 'prog-mode-hook (lambda() 
+                                (progn 
+                                  (flyspell-mode 0)
+                                  (auto-complete-mode 1)
+                                  (auto-fill-mode 0)
+                                  (toggle-truncate-lines)
+                                  )
+                                ))
+    ))
+
+;;added by ablian(PetersonLian)
 
 (put 'narrow-to-region 'disabled nil)
 
