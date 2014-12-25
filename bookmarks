@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("add_page.php"
+(("mode-require-final-newline"
+ (filename . "/usr/local/share/emacs/24.3/lisp/files.el.gz")
+ (front-context-string . "(defcustom mode-")
+ (rear-context-string . "diting-basics)\n\n")
+ (position . 12894))
+("add_page.php"
  (filename . "~/jianbing/gjj_server/h5/page/add_page.php")
  (front-context-string . "            }els")
  (rear-context-string . "        return;\n")

@@ -1,0 +1,9 @@
+#contributor : Peterson Lian <lianpeipei202@gmail.com>
+#name : javascript method comment
+# --
+/**
+ *$1
+ *@param {$2} $3
+ *@return {$4} $5
+ */
+$0

@@ -180,3 +180,22 @@ when it inserts comment at the end of the line. "
 (global-set-key (kbd "M-k") 'qiang-copy-line)
 #+end_src
 上面还多加了一个配置，就是把 alt-k 设成复制光标所在处到行尾。
+** iy-go-to-char
+介绍来自[[https://www.youtube.com/watch?v%3DOA0AjzBgWU4&index%3D25&list%3DUUkRmQ_G_NbdbCQMpALg6UPg][emacs rocks e4]]
++begin_src emacs-lisp
+(global-set-key (kbd "M-i") 'iy-go-to-char)
++end_src
+上述，全局绑定已被通过key-chord.el优化，优化后如下(来自[[https://www.youtube.com/watch?v%3DNXTf8_Arl1w&index%3D22&list%3DUUkRmQ_G_NbdbCQMpALg6UPg][emacs rocks ep7]])
+#+begin_src emacs-lisp
+;;Move to char similar to "f" in vim, f+n(same time) forward, fp backward
+(key-chord-define-global "fn" 'iy-go-to-char)
+(key-chord-define-global "fp" 'iy-go-to-char-backward)
+
+;;Add semicolon to end of line -not recommended for lisp mode!
+;;(key-chord-define js-mode-map ";;" "\C-e;")
+#+end_src
+** [[https://github.com/magnars/expand-region.el][expand-region]]
+#+begin_src emacs-lisp
+(require 'expand-region)
+(global-set-key (kbd "M-=") 'er/expand-region);;overriding 'count-words-region 's keybinding
+#+end_src

@@ -1,0 +1,11 @@
+{ "browser": true,
+  "curly": true,
+  "undef": true,
+  "newcap": true,
+  "jquery": true,
+  "nomen": false,
+  "nonew": true,
+  "loopfunc": true,
+  "shadow": true,
+  "global": ["getGlobal", "setGlobal", "popView", "request", "showLoading", "hideLoading", "env", "showMask", "hideMask", "login", "loadLocation"]
+}

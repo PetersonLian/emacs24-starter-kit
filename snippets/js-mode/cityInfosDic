@@ -1,0 +1,4 @@
+#contributor : Peterson Lian <lianpeipei202@gmail.com>
+#name : 51gjj h5 insert into cityInfosDic
+# --
+$1: {depositRange: [$2], loanCreditRange: [$3]}$0
