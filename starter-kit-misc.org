@@ -185,11 +185,12 @@ added by  Peterson Lian(AKA ablian)
 configuration for  multi-web-mode
 
 #+begin_src emacs-lisp
+(require 'php-mode)
 (require 'multi-web-mode)
 (setq mweb-default-major-mode 'html-mode)
 (setq mweb-tags '((php-mode "<\\?php\\|<\\? \\|<\\?=" "\\?>")
-                  (js-mode "<script +\\(type=\"text/javascript\"\\|language=\"javascript\"\\)[^>]*>" "</script>")
-                  (css-mode "<style +type=\"text/css\"[^>]*>" "</style>")))
+                  (js-mode "<script[^>]*>" "</script>")
+                  (css-mode "<style[^>]*>" "</style>")))
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
 #+end_src
@@ -690,3 +691,8 @@ I(ablian) used jshint instead
 #+begin_src emacs-lisp
 (add-hook 'css-mode-hook 'ac)
 #+end_src
+** prog-mode-hook
+#+begin_src emacs-lisp
+(add-hook 'prog-mode-hook 'ac)
+#+end_src
+   
