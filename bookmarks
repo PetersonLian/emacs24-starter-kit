@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("mode-require-final-newline"
+(("Emacs Regexp Backslash"
+ (front-context-string . "15.7 Backslash i")
+ (rear-context-string . "s,  Up: Search\n\n")
+ (position . 338277)
+ (filename . "/usr/local/share/info/emacs")
+ (info-node . "Regexp Backslash")
+ (handler . Info-bookmark-jump))
+("mode-require-final-newline"
  (filename . "/usr/local/share/emacs/24.3/lisp/files.el.gz")
  (front-context-string . "(defcustom mode-")
  (rear-context-string . "diting-basics)\n\n")

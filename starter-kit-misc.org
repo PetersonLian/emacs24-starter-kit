@@ -368,8 +368,6 @@ why?see [[http://ergoemacs.org/emacs/emacs_key_notation_return_vs_RET.html][reas
 (define-key yafolding-mode-map (kbd "C-c C-a RET") 'yafolding-toggle-all)
 (define-key yafolding-mode-map (kbd "C-c C-e RET") 'yafolding-toggle-element)
 #+end_src
-** prog-mode-hook
-已经写进到./init.el文件中
 ** auto-coding-alist自动在所有打开的mode里头打开自定义的ac函数
 不能用，貌似会覆盖掉所有的其他mode。即，一个org文件，我同时也是需要它
 能自发开启org-mode的
@@ -380,7 +378,7 @@ why?see [[http://ergoemacs.org/emacs/emacs_key_notation_return_vs_RET.html][reas
 具体参考[[http://truongtx.me/2014/07/22/setup-php-development-environment-in-emacs/][这个文档]]
 
 
-#+begin_src emacs-lisp
+#begin_src emacs-lisp
     (defun my-setup-php ()
       ;; enable web mode
       (web-mode)
@@ -396,7 +394,7 @@ why?see [[http://ergoemacs.org/emacs/emacs_key_notation_return_vs_RET.html][reas
       (setq web-mode-markup-indent-offset 2))
     
     (add-to-list 'auto-mode-alist '("\\.php$" . my-setup-php))
-#+end_src
+#end_src
 
 ;;Syntax Checking for PHP files
 
