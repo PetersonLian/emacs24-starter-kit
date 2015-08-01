@@ -693,4 +693,9 @@ I(ablian) used jshint instead
 #+begin_src emacs-lisp
 (add-hook 'prog-mode-hook 'ac)
 #+end_src
-   
+** html-mode-hook
+
+#+begin_src emacs-lisp
+(add-hook 'html-mode-hook 'ac-html-enable)
+(add-hook 'sgml-mode-hook 'ac-html-enable)
+#+end_src
