@@ -1,0 +1,60 @@
+
+;; ----- smex-history -----
+(
+ find-tag
+ visit-tags-table
+ list-tags
+ backward-sexp
+ kill-ring-save
+ forward-sexp
+ linum-mode
+)
+
+;; ----- smex-data -----
+(
+ (backward-sexp . 1371)
+ (css-mode . 13)
+ (forward-sexp . 1720)
+ (java-mode . 1)
+ (javascript-mode . 3)
+ (html-mode . 2)
+ (goto-line . 67)
+ (kill-line . 1)
+ (kill-buffer . 44)
+ (makeOneRectInline . 3)
+ (package-install . 1)
+ (package-list-packages . 7)
+ (shrink-window . 3)
+ (describe-mode . 3)
+ (package-install-file . 1)
+ (ac-html-enable . 3)
+ (lppReplaceWithParameter . 2)
+ (shell . 14)
+ (yafolding-mode . 2)
+ (yafolding-hide-all . 2)
+ (yafolding-show-element . 16)
+ (yafolding-hide-element . 19)
+ (set-goal-column . 1)
+ (kill-ring-save . 683)
+ (qiang-copy-line . 27)
+ (yafolding-show-all . 3)
+ (php-mode . 7)
+ (shrink-window-horizontally . 4)
+ (linum-mode . 10)
+ (query-replace . 1)
+ (dired-sort-toggle-or-edit . 1)
+ (bookmark-save . 4)
+ (wechatFaq . 2)
+ (irc . 1)
+ (isearch-forward-regexp . 88)
+ (isearch-toggle-regexp . 4)
+ (save-macro . 3)
+ (describe-coding-system . 1)
+ (prefer-coding-system . 1)
+ (rectangle-mark-mode . 3)
+ (xah-open-in-external-app . 3)
+ (image-mode . 1)
+ (list-tags . 1)
+ (visit-tags-table . 2)
+ (find-tag . 2)
+)
