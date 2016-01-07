@@ -195,7 +195,13 @@ when it inserts comment at the end of the line. "
 ;;(key-chord-define js-mode-map ";;" "\C-e;")
 #+end_src
 ** [[https://github.com/magnars/expand-region.el][expand-region]]
+ablian
 #+begin_src emacs-lisp
 (require 'expand-region)
 (global-set-key (kbd "M-=") 'er/expand-region);;overriding 'count-words-region 's keybinding
+#+end_src
+** yafolding-show-element  ablian
+#+begin_src emacs-lisp
+(require 'yafolding)
+(global-set-key (kbd "C-,") 'yafolding-show-element);;overriding 'count-words-region 's keybinding
 #+end_src

@@ -50,7 +50,7 @@ evaluated a theme is activated using the =load-theme= function.
         uniquify-buffer-name-style 'forward
         whitespace-style '(trailing lines space-before-tab
                                     indentation space-after-tab)
-        whitespace-line-column 100
+        whitespace-line-column 80
         ediff-window-setup-function 'ediff-setup-windows-plain
         oddmuse-directory (concat starter-kit-dir "oddmuse")
         xterm-mouse-mode t
@@ -205,7 +205,6 @@ added by  Peterson Lian(AKA ablian)
 (global-set-key [(ctrl c) (b) (f)] 'tabbar-forward)
 **** backward
 (global-set-key [(ctrl c) (b) (b)] 'tabbar-backward)
-<<<<<<< HEAD
 ** Auto-Complete Mode
 added by Peterson Lian(AKA ablian)
 
@@ -229,8 +228,6 @@ add "ac-source-yasnippet" into variable "ac-sources"
 #+begin_src emacs-lisp
 (add-to-list 'ac-sources 'ac-source-yasnippet)
 #+end_src
-=======
->>>>>>> parent of 0dd9316... customization:Auto-Complete mode
 *** turn on for other specified modes:html,etc.
 **** turn on for html
 #+begin_src emacs-lisp
@@ -283,16 +280,16 @@ added by Peterson Lian(AKA ablian)
       ;;argument is not 'nil,just close 'flyspell-mode
       (progn
       (flyspell-mode 0)
-      (auto-fill-mode 0)
-      (toggle-truncate-lines)
+      (auto-fill-mode 1)
+      (toggle-truncate-lines 1)
       (yafolding-mode 1)
       )
       ;;argument is 'nil, close 'flyspell-mode and open 'Auto-complete mode
       (progn 
       (flyspell-mode 0)
       (auto-complete-mode 1)
-      (auto-fill-mode 0)
-      (toggle-truncate-lines)
+      (auto-fill-mode 1)
+      (toggle-truncate-lines 1)
       (yafolding-mode 1)
       ))
     )
@@ -331,7 +328,7 @@ more details, check out [[http://www.emacswiki.org/emacs/GnusGmai][GnusGmail]] a
                 (interactive)
                 (progn
                   (flyspell-mode 0)
-                  (auto-fill-mode 0)
+                  (auto-fill-mode 1)
                   (Auto-Complete-mode 1)
                   (toggle-truncate-lines)
                   (split-window-below 6))
@@ -365,8 +362,8 @@ using 'RET' instead of '<return>'.
 why?see [[http://ergoemacs.org/emacs/emacs_key_notation_return_vs_RET.html][reason]]
 #+begin_src emacs-lisp
 (require 'yafolding)
-(define-key yafolding-mode-map (kbd "C-c C-a RET") 'yafolding-toggle-all)
-(define-key yafolding-mode-map (kbd "C-c C-e RET") 'yafolding-toggle-element)
+(define-key yafolding-mode-map (kbd "M-.") 'yafolding-toggle-all)
+(define-key yafolding-mode-map (kbd "C-.") 'yafolding-toggle-element)
 #+end_src
 ** auto-coding-alist自动在所有打开的mode里头打开自定义的ac函数
 不能用，貌似会覆盖掉所有的其他mode。即，一个org文件，我同时也是需要它
@@ -699,3 +696,85 @@ I(ablian) used jshint instead
 (add-hook 'html-mode-hook 'ac-html-enable)
 (add-hook 'sgml-mode-hook 'ac-html-enable)
 #+end_src
+** Set up emacs As javascript Edit Enviroment
+All Configuration is from [[http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/][This Post]]
+*** flymake-cursor  
+Even better, if we install the Flymake Cursor package, we get the
+error message in the minibuffer when the cursor is on a line with an
+error.
+
+Use this with flymake-whatever(flymake-jslint, flymake-...)
+
+#+begin_src emacs-lisp
+(require 'flymake-cursor)
+#+end_src
+*** javascript code folding
+2015-08-01 update, decide to use `yafolding to replace this .
+2015-08-03 instead ,still using `yafolding' 
+#+begin_src emacs-lisp
+(add-hook 'js-mode-hook
+          (lambda ()
+            ;; Scan the file for nested code blocks
+            (imenu-add-menubar-index)
+            ;; Activate the folding mode
+            (hs-minor-mode t)))
+
+;; Show-hide
+;; (global-set-key (kbd "M-s b") 'hs-show-block)
+;; (global-set-key (kbd "M-s a") 'hs-show-all)
+;; (global-set-key (kbd "C-h C-b") 'hs-hide-block)
+;; (global-set-key (kbd "C-h C-a") 'hs-hide-all)
+#+end_src
+*** lintnode  
+git repo : [[https://github.com/davidmiller/lintnode][lintnode]]
+lintnode repo comes with customed flymake-jslint.el;
+So, dont use flymake-jslint package from melpa
+
+#+begin_src emacs-lisp
+(setq lintnode-dir "~/lintnode")
+(if (file-directory-p (eval lintnode-dir))
+   (funcall(lambda ()
+       (add-to-list 'load-path (eval lintnode-dir))
+       (require 'flymake-jslint);;This 'flymake-jslint' package is customed, comming along with git repo https://github.com/davidmiller/lintnode
+       ;; Make sure we can find the lintnode executable
+       (setq lintnode-location lintnode-dir)
+       ;; JSLint can be... opinionated
+       (setq lintnode-jslint-excludes (list 'nomen 'undef 'plusplus  'white 'sloppy))
+       (setq lintnode-jslint-includes (list 'onevar))
+       ;; Start the server when we first open a js file and start checking
+       (add-hook 'js-mode-hook
+                 (lambda ()
+                   (lintnode-hook)))
+    ))
+    (message "lintnode, err: make sure directory exist for lintnode") 
+  )
+
+#+end_src
+*** Javascript Console
+#+begin_src emacs-lisp
+(require 'js-comint)
+;; Use node as our repl
+(setq inferior-js-program-command "node")
+ 
+(setq inferior-js-mode-hook
+      (lambda ()
+        ;; We like nice colors
+        (ansi-color-for-comint-mode-on)
+        ;; Deal with some prompt nonsense
+        (add-to-list 'comint-preoutput-filter-functions
+                     ;; (lambda() (message "js-comint: 1") (message "js-comint: 2")))
+                     (lambda (output)
+                       (replace-regexp-in-string ".*1G\.\.\..*5G" "...")
+                                                 (replace-regexp-in-string ".*1G.*3G" "&gt;" output)))
+                     )
+        )
+#+end_src
+*** Indenting.  
+This is not from the aforementioned post
+
+#+begin_src emacs-lisp
+(add-hook 'js-mode-hook (lambda () (setq indent-tabs-mode nil) (setq tab-width 4) (setq js-indent-level 4)))
+#+end_src
+
+2015-08-03, wrote: It has no effect ,since emacs's default
+configuration is already like this.

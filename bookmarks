@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Emacs Regexp Backslash"
+(("core.js"
+ (filename . "d:/workbench/phpstorm/gjj_h5/js/lib/zepto/core.js")
+ (front-context-string . "sPlainObject(sou")
+ (rear-context-string . "  if (deep && (i")
+ (position . 9031))
+("Emacs Regexp Backslash"
  (front-context-string . "15.7 Backslash i")
  (rear-context-string . "s,  Up: Search\n\n")
  (position . 338277)
