@@ -9,7 +9,9 @@
  '(org-agenda-files (quote ("~/Dropbox/org")))
  '(org-stuck-projects (quote ("+LEVEL=1-TODO=\"DONE\"-TODO=\"CANCELED\"-TODO=\"REVIEW\"" ("TODO" "NEXT" "NEXTACTION" "FEEDBACK" "CIRCLELY") nil "")))
  '(show-paren-mode t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(bookmark-save-flag 1)
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -7,6 +7,13 @@
  (front-context-string . "sPlainObject(sou")
  (rear-context-string . "  if (deep && (i")
  (position . 9031))
+("(emacs) Bookmarks"
+ (front-context-string . "\n\"Bookmarks\" are")
+ (rear-context-string . "\n==============\n")
+ (position . 236221)
+ (filename . "/usr/local/share/info/emacs")
+ (info-node . "Bookmarks")
+ (handler . Info-bookmark-jump))
 ("Emacs Regexp Backslash"
  (front-context-string . "15.7 Backslash i")
  (rear-context-string . "s,  Up: Search\n\n")

@@ -1,4 +1,7 @@
-((("$des_key" .
+<<<<<<< Updated upstream
+((("bookmark-save-flag" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+("$des_key" .
    [0 0 0 0 1 0 0 0])
   ("$yys" .
    [1 0 0 0])
@@ -11,6 +14,8 @@
   ("gi" .
    [1 0])
   ("_oldSelect" .
+   [0 0 0 1 0 0 0 0 0 0])
+  ("isLastAnim" .
    [0 0 0 1 0 0 0 0 0 0])
   ("$userPhone" .
    [0 0 0 0 0 0 1 0 0 0])
