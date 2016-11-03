@@ -9,7 +9,14 @@
 ;;;automatically download package if not exist
 (require 'package)
 (add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-b" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("marmalade" . "https://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (package-initialize)
 
 (when (not package-archive-contents)
