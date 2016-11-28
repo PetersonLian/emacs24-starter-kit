@@ -41,6 +41,7 @@
    flymake-cursor
    window-numbering
    js-comint
+   xah-find
   ))
 
 (dolist (p my-packages)
