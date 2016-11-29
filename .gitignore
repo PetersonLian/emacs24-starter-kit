@@ -52,3 +52,5 @@ secret.org
 .emacs.desktop*
 .*~
 agent/*
+ac-comphist.dat
+smex-items
