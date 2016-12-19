@@ -778,3 +778,11 @@ This is not from the aforementioned post
 
 2015-08-03, wrote: It has no effect ,since emacs's default
 configuration is already like this.
+** xah-find-mode
+*** xah-find-text
+background color setting
+
+#+begin_src emacs-lisp
+(setq xah-find-file-background-color "blue")
+(setq xah-find-match-background-color "green")
+#+end_src
